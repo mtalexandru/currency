@@ -14,6 +14,8 @@ public interface  BankCurrencyRepository {
 
     BankCurrency save(BankCurrency newCurrency);
 
+    BankCurrency saveOrUpdate(BankCurrency newCurrency);
+
     List<BankCurrency> loadAll();
 
     List<BankReport> findAllBankReports();

@@ -1,5 +1,6 @@
 package ro.mtalexandru.repository;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import ro.mtalexandru.model.Bank;
 import ro.mtalexandru.model.BankCurrency;
@@ -7,6 +8,7 @@ import ro.mtalexandru.model.BankReport;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,8 @@ public class BankCurrencyRepositoryImpl implements BankCurrencyRepository {
     public static final String SAVE_BANK_CURRENCY = "";
 
 
+    final static Logger logger = Logger.getLogger(BankCurrencyRepositoryImpl.class);
+
 	public BankCurrency save(BankCurrency newCurrency) {
 		
 		em.persist(newCurrency);
@@ -31,21 +35,64 @@ public class BankCurrencyRepositoryImpl implements BankCurrencyRepository {
 	}
 
 
-//    public BankCurrency update(BankCurrency bankCurrencyToUpdate, BankCurrency newBankCurrency){
-//
-//        String jpqlUpdate = "update Currency set updateDate = :updateDate, bankBuysValue = :bankBuysValue, bankSellsValue = :bankSellsValue where id = :id";
-//        int updatedEntities = em.createQuery(jpqlUpdate)
-//                .setParameter("updateDate", newBankCurrency.getUpdateDate() )
-//                .setParameter("bankBuysValue", newBankCurrency.getBankBuysValue() )
-//                .setParameter("bankBuysValue", newBankCurrency.getBankSellsValue())
-//                .setParameter( "id", bankCurrencyToUpdate.getId() )
-//                .executeUpdate();
-//        em.persist(newBankCurrency);
-//
-//        em.flush();
-//
-//        return currency;
-//    }
+    @Override
+    public BankCurrency saveOrUpdate(BankCurrency newCurrency) {
+
+        Query query1 = em.createQuery(
+                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId")
+                .setParameter("newCurrencyId", newCurrency.getId());
+
+        List<BankCurrency> list1 = query1.getResultList();
+        int i = 0;
+        for (BankCurrency bankCurrency : list1) {
+            i++;
+            logger.info("##### found" + i + " for querry 1" );
+        }
+
+        Query query2 = em.createQuery(
+                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId AND bc.Bank.id = :newCurrencyBankId")
+                .setParameter("newCurrencyId", newCurrency.getId())
+                .setParameter("newCurrencyBankId", newCurrency.getBank().getId());
+
+        List<BankCurrency> list2 = query2.getResultList();
+        i = 0;
+        for (BankCurrency bankCurrency : list2) {
+            i++;
+            logger.info("##### found" + i + " for querry 2" );
+        }
+
+        Query query3 = em.createQuery("SELECT bc FROM BankCurrency bc");
+
+        List<BankCurrency> list3 = query3.getResultList();
+        i = 0;
+        for (BankCurrency bankCurrency : list3) {
+            i++;
+            logger.info("##### found" + i + " for querry 3" );
+        }
+
+        //SELECT m FROM Machine m WHERE m.machinePK.machineId = 10
+        logger.info("");
+        Query query = em.createQuery(
+                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId AND bc.currencyDate= :newCurrencyDate AND bc.Bank.id = :newCurrencyBankId")
+                .setParameter("newCurrencyId", newCurrency.getId())
+                .setParameter("newCurrencyBankId", newCurrency.getBank().getId())
+                .setParameter("newCurrencyDate", newCurrency.getCurrencyDate());
+        if (query.getResultList() != null && query.getResultList().size() > 0) {
+            BankCurrency existingCurrency = (BankCurrency) query.getResultList().get(0);
+            if (existingCurrency != null) {
+                existingCurrency.setUpdateDate(new Date());
+                existingCurrency.setBankBuysValue(newCurrency.getBankBuysValue());
+                existingCurrency.setBankSellsValue(newCurrency.getBankSellsValue());
+                em.persist(existingCurrency);
+            }
+        }
+        else {
+            em.persist(newCurrency);
+        }
+        em.flush();
+
+        return newCurrency;
+    }
 
 
     public List<BankCurrency> loadAll() {

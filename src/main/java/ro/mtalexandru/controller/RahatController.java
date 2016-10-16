@@ -53,7 +53,9 @@ public class RahatController {
                 AbstractScraper.Valuta valutaCurenta = (AbstractScraper.Valuta)pair.getValue();
                 BankCurrency bankCurrency = generateBankCurrency(valutaCurenta);
                 if (bankCurrency != null){
-                    bankCurrencyService.save(bankCurrency);
+//                    bankCurrencyService.save(bankCurrency);
+                    bankCurrencyService.saveOrUpdate(bankCurrency);
+
                 }
                 else{
                     logger.error("BankCurrency was not created. Could not save the entity for bank: " + valutaCurenta.getCurrencyShortName() +

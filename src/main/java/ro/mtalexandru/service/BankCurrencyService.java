@@ -10,6 +10,8 @@ public interface BankCurrencyService {
 
 	BankCurrency save(BankCurrency bankCurrency);
 
+    BankCurrency saveOrUpdate(BankCurrency newCurrency);
+
 	List<BankCurrency> findAllBankCurrencies();
 
     List<BankCurrency> findByBank(Bank bank);

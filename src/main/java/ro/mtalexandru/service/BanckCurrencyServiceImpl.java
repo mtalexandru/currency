@@ -30,6 +30,12 @@ public class BanckCurrencyServiceImpl implements BankCurrencyService {
 		return bankCurrencyRepository.save(bankCurrency);
 	}
 
+    @Transactional
+    public BankCurrency saveOrUpdate(BankCurrency bankCurrency) {
+        return bankCurrencyRepository.saveOrUpdate(bankCurrency);
+    }
+
+
     public List<BankCurrency> findAllBankCurrencies() {
         return bankCurrencyRepository.loadAll();
     }
