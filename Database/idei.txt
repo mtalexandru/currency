@@ -1,0 +1,57 @@
+
+Banca: 
+shortName
+currencyShortName
+
+
+valuta: 
+
+
+
+
+
+
+           Euro
+Banca : Cumparare : Vanzare
+BRD        4.45       4.57
+BCR     xxx            xxx
+
+
+           Dolar
+Banca : Cumparare : Vanzare
+BRD        4.05       4.17
+BCR     xxx            xxx
+
+
+
+
+Valute: 
+usd
+ron
+euro
+yen
+leva
+
+
+
+
+
+Valuta:
+
+id
+shortName
+Description
+BuyValue
+SellValue
+bankId
+Data crearii
+Data actualizarii
+Data valutei
+
+
+Tabel principal euro:
+Select b.shotName v.buyValue v.sellValue from valuta v join bank b on v.bank_id = b.id where v.shortName = 'EUR' AND v.currencyDate = SYSDATE;
+
+
+
+ 

@@ -1,0 +1,10 @@
+
+Cauta toate valutele pentru toate bancile ordonate dupa valuta 
+SELECT b.short_name,bc.bank_buys_value,bc.bank_sells_value, c.short_name 
+FROM currency.bank_currency bc join bank b on bc.bank_id = b.id join currency c on bc.currency_id = c.id 
+ORDER BY c.short_name ASC, b.short_name DESC 
+
+SELECT b.short_name,bc.bank_buys_value,bc.bank_sells_value 
+FROM currency.bank_currency bc join bank b on bc.bank_id = b.id join currency c on bc.currency_id = c.id 
+WHERE c.short_name = 'EUR'
+ORDER BY b.short_name DESC 
