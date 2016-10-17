@@ -37,7 +37,7 @@ public class GoalController {
 
         System.out.println("##### - bankService" + bankService);
         System.out.println("##### - currencyService" + currencyService);
-        System.out.println("##### - bankCurrencyeService" + bankCurrencyeService);
+        System.out.println("##### - bankCurrencyService" + bankCurrencyeService);
 
 
         return "addGoal";
@@ -52,7 +52,7 @@ public class GoalController {
 
         System.out.println("##### - bankService" + bankService);
         System.out.println("##### - currencyService" + currencyService);
-        System.out.println("##### - bankCurrencyeService" + bankCurrencyeService);
+        System.out.println("##### - bankCurrencyService" + bankCurrencyeService);
 
 
         if(result.hasErrors()) {
