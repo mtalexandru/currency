@@ -18,9 +18,7 @@ import ro.mtalexandru.service.CurrencyService;
 import ro.mtalexandru.service.GoalService;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Mau on 8/21/2016.
@@ -44,28 +42,35 @@ public class RahatController {
         @RequestMapping(value = "fetching", method = RequestMethod.GET)
         public String fetching(Model model) {
             WebScraperING webScraperING = new WebScraperING();
-            Map<Integer,AbstractScraper.Valuta> ingCurrenciesMap = webScraperING.getCursIng();
-            Iterator it = ingCurrenciesMap.entrySet().iterator();
+//            Map<Integer,AbstractScraper.Valuta> ingCurrenciesMap = webScraperING.getCursIng();
+//            Iterator it = ingCurrenciesMap.entrySet().iterator();
             Bank bank = bankService.findBankByShortName("ING");
             List<BankCurrency> bankCurrencyList = bankCurrencyService.getByBankAndDate(bank,new Date());
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry)it.next();
-                AbstractScraper.Valuta valutaCurenta = (AbstractScraper.Valuta)pair.getValue();
-                BankCurrency bankCurrency = generateBankCurrency(valutaCurenta);
-                if (bankCurrency != null){
-//                    bankCurrencyService.save(bankCurrency);
-                    bankCurrencyService.saveOrUpdate(bankCurrency);
 
-                }
-                else{
-                    logger.error("BankCurrency was not created. Could not save the entity for bank: " + valutaCurenta.getCurrencyShortName() +
-                    " with currency: " + valutaCurenta.getCurrencyShortName());
+			List<BankCurrency> curerncyList = bankCurrencyService.getByBankAndDate(bank,new Date());
+			for (BankCurrency bankCurrency : curerncyList){
+				bankCurrencyService.saveOrUpdate(bankCurrency);
+			}
 
-                }
-                AbstractScraper.log(
-                        valutaCurenta.getCurrencyShortName() + ": ING CUMPARA CU: " + valutaCurenta.getBankBuysValue() + " si ING VINDE CU: " + valutaCurenta.getBankSellsValue());
-                it.remove(); // avoids a ConcurrentModificationException
-            }
+			//TODO: @@ COMMENTED AS TO NOT SPAM THE WEBSITE
+//            while (it.hasNext()) {
+//                Map.Entry pair = (Map.Entry)it.next();
+//                AbstractScraper.Valuta valutaCurenta = (AbstractScraper.Valuta)pair.getValue();
+//                BankCurrency bankCurrency = generateBankCurrency(valutaCurenta);
+//                if (bankCurrency != null){
+////                    bankCurrencyService.save(bankCurrency);
+//                    bankCurrencyService.saveOrUpdate(bankCurrency);
+//
+//                }
+//                else{
+//                    logger.error("BankCurrency was not created. Could not save the entity for bank: " + valutaCurenta.getCurrencyShortName() +
+//                    " with currency: " + valutaCurenta.getCurrencyShortName());
+//
+//                }
+//                AbstractScraper.log(
+//                        valutaCurenta.getCurrencyShortName() + ": ING CUMPARA CU: " + valutaCurenta.getBankBuysValue() + " si ING VINDE CU: " + valutaCurenta.getBankSellsValue());
+//                it.remove(); // avoids a ConcurrentModificationException
+//            }
 
 
 //            model.addAttribute("bankcurrency", bankcurrency);

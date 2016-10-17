@@ -38,43 +38,11 @@ public class BankCurrencyRepositoryImpl implements BankCurrencyRepository {
     @Override
     public BankCurrency saveOrUpdate(BankCurrency newCurrency) {
 
-        Query query1 = em.createQuery(
-                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId")
-                .setParameter("newCurrencyId", newCurrency.getId());
-
-        List<BankCurrency> list1 = query1.getResultList();
-        int i = 0;
-        for (BankCurrency bankCurrency : list1) {
-            i++;
-            logger.info("##### found" + i + " for querry 1" );
-        }
-
-        Query query2 = em.createQuery(
-                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId AND bc.Bank.id = :newCurrencyBankId")
-                .setParameter("newCurrencyId", newCurrency.getId())
-                .setParameter("newCurrencyBankId", newCurrency.getBank().getId());
-
-        List<BankCurrency> list2 = query2.getResultList();
-        i = 0;
-        for (BankCurrency bankCurrency : list2) {
-            i++;
-            logger.info("##### found" + i + " for querry 2" );
-        }
-
-        Query query3 = em.createQuery("SELECT bc FROM BankCurrency bc");
-
-        List<BankCurrency> list3 = query3.getResultList();
-        i = 0;
-        for (BankCurrency bankCurrency : list3) {
-            i++;
-            logger.info("##### found" + i + " for querry 3" );
-        }
-
         //SELECT m FROM Machine m WHERE m.machinePK.machineId = 10
         logger.info("");
         Query query = em.createQuery(
-                "SELECT bc FROM BankCurrency bc WHERE bc.Currency.id = :newCurrencyId AND bc.currencyDate= :newCurrencyDate AND bc.Bank.id = :newCurrencyBankId")
-                .setParameter("newCurrencyId", newCurrency.getId())
+                "SELECT bc FROM BankCurrency bc WHERE bc.currency.id = :newCurrencyId AND bc.currencyDate= :newCurrencyDate AND bc.bank.id = :newCurrencyBankId")
+                .setParameter("newCurrencyId", newCurrency.getCurrency().getId())
                 .setParameter("newCurrencyBankId", newCurrency.getBank().getId())
                 .setParameter("newCurrencyDate", newCurrency.getCurrencyDate());
         if (query.getResultList() != null && query.getResultList().size() > 0) {

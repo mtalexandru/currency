@@ -16,6 +16,7 @@ public class Currency implements Serializable {
 
     @Id
     @GeneratedValue
+	@Column(name="ID")
     private Long id;
 
     @NotNull

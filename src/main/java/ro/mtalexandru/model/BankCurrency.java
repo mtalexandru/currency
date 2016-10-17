@@ -25,6 +25,7 @@ public class BankCurrency implements Serializable {
 
     @Id
     @GeneratedValue
+	@Column(name="ID")
     private Long id;
 
     @NotNull
