@@ -71,7 +71,18 @@ public class BankCurrencyRepositoryImpl implements BankCurrencyRepository {
         return query.getResultList();
     }
 
-    public List<BankReport> findAllBankReports() {
+
+	public List<BankCurrency> listAllCurrenciesForToday() {
+
+		Date newDate = new Date();
+		TypedQuery query = em.createQuery("select bc from BankCurrency bc where bc.currencyDate = ?1", BankCurrency.class);
+		query.setParameter(1, newDate);
+
+		return query.getResultList();
+	}
+
+
+	public List<BankReport> findAllBankReports() {
         return null;
     }
 

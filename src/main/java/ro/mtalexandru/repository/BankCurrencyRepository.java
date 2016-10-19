@@ -20,6 +20,8 @@ public interface  BankCurrencyRepository {
 
     List<BankReport> findAllBankReports();
 
+	List<BankCurrency> listAllCurrenciesForToday();
+
     List<BankCurrency> findByBank(Bank bank);
 
     List<BankCurrency> getByBankAndDate(Bank bank, Date date);

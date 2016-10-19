@@ -8,7 +8,7 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="ro.mtalexandru"/>
-	
+
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
