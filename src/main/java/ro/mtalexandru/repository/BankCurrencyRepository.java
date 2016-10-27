@@ -18,6 +18,8 @@ public interface  BankCurrencyRepository {
 
     List<BankCurrency> loadAll();
 
+	List<BankCurrency> loadAllEager();
+
     List<BankReport> findAllBankReports();
 
 	List<BankCurrency> listAllCurrenciesForToday();

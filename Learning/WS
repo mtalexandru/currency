@@ -1,0 +1,20 @@
+Cand incercam sa pasez o entitate adusa cu hibernate catre webservice primeam error 500 si atat.
+Solutia a fost urmatoarea:
+1) Am atasat un ExceptionMapper utilizand adnotarea @Provider
+@Provider
+public class DebugExceptionMapper implements ExceptionMapper<Exception> {
+
+    @Override
+    public Response toResponse(Exception exception) {
+        exception.printStackTrace();
+        return Response.serverError().entity(exception.getMessage()).build();
+    }
+}
+
+2) Am aflat ca eroarea era ceva de genul " JAXB A cycle is detected in the object graph "
+Asta inseamna ca entitatea mea avea o relatie bidirectionala cu o alta entitate si se crea un ciclu la serializare
+
+Solutia, in cazul eclispeLink a fost adnotarea 	@XmlInverseReference(mappedBy="currency") in Currency si @XmlInverseReference(mappedBy="bank") in entitatea Bank. Astfel a stiut
+sa nu mai creeze ciclul. Daca foloseam adnotarea in entitatea BankCurrency atunci imi scotea de tot referintele catre banca si currency, ca un fel de @JsonIgnore
+
+

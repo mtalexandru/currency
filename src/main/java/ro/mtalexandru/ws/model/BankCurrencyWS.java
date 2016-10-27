@@ -1,67 +1,64 @@
-package ro.mtalexandru.model;
+package ro.mtalexandru.ws.model;
 
-import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
-import org.hibernate.annotations.Type;
+import ro.mtalexandru.model.Bank;
+import ro.mtalexandru.model.Currency;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Mau on 8/20/2016.
  */
-@Entity
-@Table(name="BANK_CURRENCY")
-@NamedQueries({
-//        @NamedQuery(name=BankCurrency.GET_ALL_CURRENCIES, query="Select new ro.mtalexandru.model.GoalReport(g.minutes, e.minutes, e.activity) " +
-//                "from Goal g, Exercise e where g.id = e.goal.id"),
-        @NamedQuery(name=BankCurrency.GET_ALL_CURRENCIES, query="Select bc from BankCurrency bc")
+public class BankCurrencyWS{
 
-})
-public class BankCurrency implements Serializable {
+//	public BankCurrencyWS(Long id, Double bankBuysValue, Double bankSellsValue, Date currencyDate, Date creationDate, Date updateDate, boolean deleted, Bank bank, Currency currency){
+//		this.id = id;
+//		this.bankBuysValue = bankBuysValue;
+//		this.bankSellsValue = bankSellsValue;
+//		this.currencyDate = currencyDate;
+//		this.creationDate = creationDate;
+//		this.updateDate = updateDate;
+//		this.deleted = deleted;
+//		this.bank = bank;
+//		this.currency = currency;
+//	}
 
-//    public static final String FIND_ALL_GOALS = "findAllGoals";
-    public static final String GET_ALL_CURRENCIES = "getAllCurrencies";
+	public BankCurrencyWS(){
+	}
+	public BankCurrencyWS(Long id, Double bankBuysValue, Double bankSellsValue){
+		this.id = id;
+		this.bankBuysValue = bankBuysValue;
+		this.bankSellsValue = bankSellsValue;
+	}
 
-    @Id
-    @GeneratedValue
-	@Column(name="ID")
+//	public BankCurrencyWS(BankCurrency bankCurrency){
+//		this.id = bankCurrency.getId();
+//		this.bankBuysValue = bankCurrency.getBankBuysValue();
+//		this.bankSellsValue = bankCurrency.getBankSellsValue();
+//		this.currencyDate = bankCurrency.getCurrencyDate();
+//		this.creationDate = bankCurrency.getCreationDate();
+//		this.updateDate = bankCurrency.getUpdateDate();
+//		this.deleted = bankCurrency.isDeleted();
+//		this.bank = bankCurrency.getBank();
+//		this.currency = bankCurrency.getCurrency();
+//	}
+
     private Long id;
 
-    @NotNull
-    @Column(name="BANK_BUYS_VALUE")
     private Double bankBuysValue;
 
-    @NotNull
-    @Column(name="BANK_SELLS_VALUE")
     private Double bankSellsValue;
 
-    @NotNull
-    @Column(name="CURRENCY_DATE")
     private Date currencyDate;
 
-    @NotNull
-    @Column(name="CREATION_DATE")
     private Date creationDate;
 
-    @Column(name="UPDATE_DATE")
     private Date updateDate;
 
-    @NotNull
-    @Column(name="DELETED", columnDefinition = "BIT", length = 1)//columnDefinition = "TINYINT")
-    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean deleted;
 
-    @ManyToOne
-    @JoinColumn(name = "BANK_ID")
-//	@XmlInverseReference(mappedBy="bankCurrencies")
-    private Bank bank = new Bank();
+    private Bank bank;
 
-    @ManyToOne
-    @JoinColumn(name = "CURRENCY_ID")
-//	@XmlInverseReference(mappedBy="bankCurrencies")
-    private Currency currency = new Currency();
+    private Currency currency;
 
 	public Long getId() {
 		return id;

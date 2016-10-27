@@ -3,6 +3,8 @@ package ro.mtalexandru.model;
 
 public class Activity {
 
+	public Activity(){}
+
 	private Long id;
 	
 	private String desc;

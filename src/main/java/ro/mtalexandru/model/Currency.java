@@ -1,5 +1,7 @@
 package ro.mtalexandru.model;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -27,7 +29,8 @@ public class Currency implements Serializable {
     private String description;
 
     @OneToMany(mappedBy = "currency")
-    private Set<BankCurrency> bankCurrencies = new HashSet<BankCurrency>();
+	@XmlInverseReference(mappedBy="currency")
+    private Set<BankCurrency> bankCurrencies = new HashSet<>();
 
     public Long getId() {
         return id;

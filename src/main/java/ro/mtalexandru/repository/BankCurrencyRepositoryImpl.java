@@ -71,6 +71,10 @@ public class BankCurrencyRepositoryImpl implements BankCurrencyRepository {
         return query.getResultList();
     }
 
+	public List<BankCurrency> loadAllEager() {
+		Query query = em.createQuery("SELECT bc FROM BankCurrency bc JOIN FETCH bc.currency JOIN FETCH bc.bank");
+		return query.getResultList();
+	}
 
 	public List<BankCurrency> listAllCurrenciesForToday() {
 
