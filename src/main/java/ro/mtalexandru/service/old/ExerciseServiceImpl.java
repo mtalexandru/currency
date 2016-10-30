@@ -1,4 +1,4 @@
-package ro.mtalexandru.service;
+package ro.mtalexandru.service.old;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.mtalexandru.model.Activity;
-import ro.mtalexandru.model.Exercise;
-import ro.mtalexandru.repository.ExerciseRepository;
+import ro.mtalexandru.model.old.Activity;
+import ro.mtalexandru.model.old.Exercise;
+import ro.mtalexandru.repository.old.ExerciseRepository;
 
 
 @Service("exerciseService")

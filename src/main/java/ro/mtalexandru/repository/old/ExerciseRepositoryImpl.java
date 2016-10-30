@@ -1,7 +1,7 @@
-package ro.mtalexandru.repository;
+package ro.mtalexandru.repository.old;
 
 import org.springframework.stereotype.Repository;
-import ro.mtalexandru.model.Exercise;
+import ro.mtalexandru.model.old.Exercise;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,10 +1,10 @@
-package ro.mtalexandru.ws.repository;
+package ro.mtalexandru.ws.old.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
-import ro.mtalexandru.model.Exercise;
-import ro.mtalexandru.repository.ExerciseRepository;
+import ro.mtalexandru.model.old.Exercise;
+import ro.mtalexandru.repository.old.ExerciseRepository;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

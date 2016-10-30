@@ -1,4 +1,4 @@
-package ro.mtalexandru.model;
+package ro.mtalexandru.model.old;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name="goals")
 @NamedQueries({
-	@NamedQuery(name=Goal.FIND_GOAL_REPORTS, query="Select new ro.mtalexandru.model.GoalReport(g.minutes, e.minutes, e.activity) " +
+	@NamedQuery(name=Goal.FIND_GOAL_REPORTS, query="Select new ro.mtalexandru.model.old.GoalReport(g.minutes, e.minutes, e.activity) " +
 				"from Goal g, Exercise e where g.id = e.goal.id"),
 	@NamedQuery(name=Goal.FIND_ALL_GOALS, query="Select g from Goal g")			
 	

@@ -1,7 +1,7 @@
-package ro.mtalexandru.ws.repository;
+package ro.mtalexandru.ws.old.repository;
 
-import ro.mtalexandru.ws.model.Activity;
-import ro.mtalexandru.ws.model.User;
+import ro.mtalexandru.ws.old.model.Activity;
+import ro.mtalexandru.ws.old.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

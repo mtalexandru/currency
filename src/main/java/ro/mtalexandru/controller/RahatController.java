@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import ro.mtalexandru.jsoup.AbstractScraper;
-import ro.mtalexandru.jsoup.WebScraperING;
 import ro.mtalexandru.model.Bank;
 import ro.mtalexandru.model.BankCurrency;
 import ro.mtalexandru.model.Currency;
 import ro.mtalexandru.service.BankCurrencyService;
 import ro.mtalexandru.service.BankService;
 import ro.mtalexandru.service.CurrencyService;
-import ro.mtalexandru.service.GoalService;
+import ro.mtalexandru.service.old.GoalService;
 
 import java.util.Date;
 import java.util.List;
@@ -41,18 +40,19 @@ public class RahatController {
 
         @RequestMapping(value = "fetching", method = RequestMethod.GET)
         public String fetching(Model model) {
-            WebScraperING webScraperING = new WebScraperING();
-//            Map<Integer,AbstractScraper.Valuta> ingCurrenciesMap = webScraperING.getCursIng();
-//            Iterator it = ingCurrenciesMap.entrySet().iterator();
-            Bank bank = bankService.findBankByShortName("ING");
-            List<BankCurrency> bankCurrencyList = bankCurrencyService.getByBankAndDate(bank,new Date());
 
-			List<BankCurrency> curerncyList = bankCurrencyService.getByBankAndDate(bank,new Date());
-			for (BankCurrency bankCurrency : curerncyList){
-				bankCurrencyService.saveOrUpdate(bankCurrency);
-			}
+                        Bank bank = bankService.findBankByShortName("ING");
+            List<BankCurrency> bankCurrencyList = bankCurrencyService.getByBankAndDate(bank,new Date());
+            List<BankCurrency> curerncyList = bankCurrencyService.getByBankAndDate(bank,new Date());
+            for (BankCurrency bankCurrency : curerncyList){
+                bankCurrencyService.saveOrUpdate(bankCurrency);
+            }
+
 
 			//TODO: @@ COMMENTED AS TO NOT SPAM THE WEBSITE
+//            WebScraperING webScraperING = new WebScraperING();
+//            Map<Integer,AbstractScraper.Valuta> ingCurrenciesMap = webScraperING.getCursIng();
+//            Iterator it = ingCurrenciesMap.entrySet().iterator();
 //            while (it.hasNext()) {
 //                Map.Entry pair = (Map.Entry)it.next();
 //                AbstractScraper.Valuta valutaCurenta = (AbstractScraper.Valuta)pair.getValue();

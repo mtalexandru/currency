@@ -1,4 +1,4 @@
-package ro.mtalexandru.controller;
+package ro.mtalexandru.controller.old;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ro.mtalexandru.model.Activity;
-import ro.mtalexandru.model.Exercise;
-import ro.mtalexandru.model.Goal;
+import ro.mtalexandru.model.old.Activity;
+import ro.mtalexandru.model.old.Exercise;
+import ro.mtalexandru.model.old.Goal;
 import ro.mtalexandru.service.BankCurrencyService;
 import ro.mtalexandru.service.BankService;
 import ro.mtalexandru.service.CurrencyService;
-import ro.mtalexandru.service.ExerciseService;
+import ro.mtalexandru.service.old.ExerciseService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

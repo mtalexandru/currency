@@ -1,4 +1,4 @@
-package ro.mtalexandru.ws;
+package ro.mtalexandru.ws.old;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

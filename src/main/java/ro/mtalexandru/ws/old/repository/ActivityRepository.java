@@ -1,6 +1,6 @@
-package ro.mtalexandru.ws.repository;
+package ro.mtalexandru.ws.old.repository;
 
-import ro.mtalexandru.ws.model.Activity;
+import ro.mtalexandru.ws.old.model.Activity;
 
 import java.util.List;
 
