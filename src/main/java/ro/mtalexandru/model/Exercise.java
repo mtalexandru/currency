@@ -22,7 +22,7 @@ public class Exercise {
 	@NotNull
 	private String activity;
 	
-	@ManyToOne
+	@ManyToOne //SAU	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.LAZY)
 	@XmlInverseReference(mappedBy="exercises")
 	private Goal goal;
 
