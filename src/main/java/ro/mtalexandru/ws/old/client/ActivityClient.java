@@ -1,6 +1,6 @@
-package ro.mtalexandru.ws.client;
+package ro.mtalexandru.ws.old.client;
 
-import ro.mtalexandru.model.Activity;
+import ro.mtalexandru.model.old.Activity;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

@@ -1,8 +1,8 @@
 package ro.mtalexandru.client;
 
 import org.junit.Test;
-import ro.mtalexandru.model.Activity;
-import ro.mtalexandru.ws.client.ActivityClient;
+import ro.mtalexandru.model.old.Activity;
+import ro.mtalexandru.ws.old.client.ActivityClient;
 
 import static org.junit.Assert.assertNotNull;
 

@@ -1,9 +1,9 @@
-package ro.mtalexandru.ws;
+package ro.mtalexandru.ws.old;
 
-import ro.mtalexandru.ws.model.Activity;
-import ro.mtalexandru.ws.model.User;
-import ro.mtalexandru.ws.repository.ActivityRepositoryStub;
-import ro.mtalexandru.ws.repository.ActivityRepository;
+import ro.mtalexandru.ws.old.model.Activity;
+import ro.mtalexandru.ws.old.model.User;
+import ro.mtalexandru.ws.old.repository.ActivityRepositoryStub;
+import ro.mtalexandru.ws.old.repository.ActivityRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

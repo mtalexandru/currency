@@ -1,4 +1,4 @@
-package ro.mtalexandru.model;
+package ro.mtalexandru.model.old;
 
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 import org.hibernate.validator.constraints.Range;

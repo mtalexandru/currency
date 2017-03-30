@@ -1,7 +1,7 @@
-package ro.mtalexandru.service;
+package ro.mtalexandru.service.old;
 
-import ro.mtalexandru.model.Goal;
-import ro.mtalexandru.model.GoalReport;
+import ro.mtalexandru.model.old.Goal;
+import ro.mtalexandru.model.old.GoalReport;
 
 import java.util.List;
 

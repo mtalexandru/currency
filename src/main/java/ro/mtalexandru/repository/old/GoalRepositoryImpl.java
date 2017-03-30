@@ -1,9 +1,9 @@
-package ro.mtalexandru.repository;
+package ro.mtalexandru.repository.old;
 
 import org.springframework.stereotype.Repository;
 import ro.mtalexandru.jsoup.WebScraperING;
-import ro.mtalexandru.model.Goal;
-import ro.mtalexandru.model.GoalReport;
+import ro.mtalexandru.model.old.Goal;
+import ro.mtalexandru.model.old.GoalReport;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -51,7 +51,7 @@ public class GoalRepositoryImpl implements GoalRepository {
     }
 
     public List<GoalReport> findAllGoalReports() {
-        //Query query = em.createQuery("Select new ro.mtalexandru.model.GoalReport(g.minutes, e.minutes, e.activity) " +
+        //Query query = em.createQuery("Select new ro.mtalexandru.model.old.GoalReport(g.minutes, e.minutes, e.activity) " +
         //		"from Goal g, Exercise e where g.id = e.goal.id");
 
         TypedQuery<GoalReport> query = em.createNamedQuery(Goal.FIND_GOAL_REPORTS, GoalReport.class);

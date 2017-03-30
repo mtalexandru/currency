@@ -1,6 +1,6 @@
-package ro.mtalexandru.repository;
+package ro.mtalexandru.repository.old;
 
-import ro.mtalexandru.model.Exercise;
+import ro.mtalexandru.model.old.Exercise;
 
 import java.util.List;
 

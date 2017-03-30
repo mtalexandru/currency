@@ -1,4 +1,4 @@
-package ro.mtalexandru.model;
+package ro.mtalexandru.model.old;
 
 public class GoalReport {
 

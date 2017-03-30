@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="BANK_CURRENCY")
 @NamedQueries({
-//        @NamedQuery(name=BankCurrency.GET_ALL_CURRENCIES, query="Select new ro.mtalexandru.model.GoalReport(g.minutes, e.minutes, e.activity) " +
+//        @NamedQuery(name=BankCurrency.GET_ALL_CURRENCIES, query="Select new ro.mtalexandru.model.old.GoalReport(g.minutes, e.minutes, e.activity) " +
 //                "from Goal g, Exercise e where g.id = e.goal.id"),
         @NamedQuery(name=BankCurrency.GET_ALL_CURRENCIES, query="Select bc from BankCurrency bc")
 

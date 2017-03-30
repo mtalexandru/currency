@@ -1,4 +1,4 @@
-package ro.mtalexandru.ws.model;
+package ro.mtalexandru.ws.old.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

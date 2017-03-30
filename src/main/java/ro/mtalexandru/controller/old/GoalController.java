@@ -1,4 +1,4 @@
-package ro.mtalexandru.controller;
+package ro.mtalexandru.controller.old;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import ro.mtalexandru.model.Goal;
-import ro.mtalexandru.model.GoalReport;
+import ro.mtalexandru.model.old.Goal;
+import ro.mtalexandru.model.old.GoalReport;
 import ro.mtalexandru.service.*;
+import ro.mtalexandru.service.old.GoalService;
 
 import javax.validation.Valid;
 import java.util.List;
